@@ -1,0 +1,53 @@
+Crear una base de datos
+  CREATE DATABASE dbname;
+
+Crear una tabla
+  CREATE TABLE table_name (
+    column_name1 data_type(size),
+    column_name2 data_type(size),
+    column_name3 data_type(size),
+    ....
+  );
+  
+  Constraints:
+  NOT NULL - El valor de la columna no puede ser nulo
+  
+  UNIQUE - Asegura que para cada linea el valor de una columna es único
+  
+  PRIMARY KEY - Es una combinación de NOT NULL y UNIQUE. Asegura que una columna o combinación de ellas tienen un         valor único
+    CONSTRAINT pk_PersonID PRIMARY KEY (P_Id)
+  
+  FOREIGN KEY - Asegura la integridad referencial de los datos de una tabla contra los datos de otra
+    CONSTRAINT fk_PerOrders FOREIGN KEY (P_Id) REFERENCES Persons(P_Id)
+  
+  CHECK - Asegura que una columna cumple una condición específica
+    CONSTRAINT chk_Person CHECK (P_Id>0 AND City='Sandnes')
+    
+  DEFAULT - Especifica un valor por defecto cuando no se especifica un valor para esta columna
+    City varchar(255) DEFAULT 'Sandnes'
+    OrderDate date DEFAULT GETDATE()
+  
+  Diferentes formas de añadir una restrición a una tabla, los ejemplos son para PRYMARY KEY pero son VALIDOS pra el     resto de resticciones:
+  
+  1. En la creación de la BD
+    CREATE TABLE Persons (
+      P_Id int NOT NULL PRIMARY KEY,
+      LastName varchar(255) NOT NULL,
+      FirstName varchar(255)
+    );
+  
+  2. Como constraint
+    CREATE TABLE Persons (
+      P_Id int NOT NULL,
+      LastName varchar(255) NOT NULL,
+      FirstName varchar(255),
+      CONSTRAINT pk_PersonID PRIMARY KEY (P_Id,LastName)
+    )
+
+  3. ALTER TABLE
+    ALTER TABLE Persons ADD PRIMARY KEY (P_Id)
+    ALTER TABLE Persons ADD CONSTRAINT pk_PersonID PRIMARY KEY (P_Id,LastName)
+    
+  Eliminar una restriccion:
+    ALTER TABLE Persons DROP PRIMARY KEY
+    ALTER TABLE Persons DROP CONSTRAINT pk_PersonID
