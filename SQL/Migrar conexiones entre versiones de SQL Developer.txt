@@ -1,0 +1,5 @@
+Acceder a la ruta:
+
+\Users\[usuario]\AppData\Roaming\SQL Developer\system[versionDondeEstanlasConexiones]\o.jdeveloper.db.connection.[numero]\connections.xml
+
+Copiar el archivo xml y copierlo en la misma ruta pero de la versión donde se quieren copiar las conexiones.
