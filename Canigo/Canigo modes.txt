@@ -1,0 +1,10 @@
+Mode
+S'ha d'indicar un valor a la propietat 'mode' amb 3 parts separades per ','. La primera indica en quin mode apareixerà el component si el mode del formulari és de creació, la segona part en quin mode ha d'aparèixer si el mode del formulari és d'edició i la tercera part en quin mode ha d'aparèixer si el mode del formulari és de consulta.
+E: editable
+I: inspeccionable (de consulta), amb un camp ocult corresponent
+S: mostrar, igual que 'I' però no es genera camp ocult
+N: no es mostra
+P: present (com 'S' si el valor del camp no és null i com 'N' si el valor del camp és nul)
+H: ocult (no es mostra, però sí es genera un camp ocult)
+R : de lectura (es genera el camp però amb l'atribut 'readonly')
+D: desactivat (es genera el camp amb l'atribut 'disabled')
