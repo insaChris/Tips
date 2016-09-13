@@ -1,0 +1,30 @@
+create directory IMAGEN_DIR as 'c:\imagen';
+
+grant read on directory IMAGEN_DIR to SCDIAP_ADM;
+
+
+
+CREATE OR REPLACE PROCEDURE agregaImagen
+   (directorio IN varchar2, archivoImagen IN varchar2) as
+   f_lob bfile;
+   b_lob blob;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('f_lob');
+    DBMS_OUTPUT.PUT_LINE('directorio : '||directorio);
+    DBMS_OUTPUT.PUT_LINE('archivoImagen : '||archivoImagen); 
+    f_lob := bfilename(directorio, archivoImagen);
+    INSERT INTO TB_CENTRE (ID, codi_estat, lob_logotipus, deleted) VALUES ( 25, 'AA', empty_blob(),0 )
+    RETURNING lob_logotipus into b_lob;
+    --Abrir archivo
+    dbms_lob.fileopen(f_lob,dbms_lob.file_readonly);
+    --Leer archivo
+    dbms_lob.loadfromfile(b_lob, f_lob, dbms_lob.getlength(f_lob));
+    --Cerrar archivo
+    dbms_lob.fileclose(f_lob);
+    
+    commit;
+END;
+
+
+execute agregaImagen('IMAGEN_DIR','Desert.jpg');
+SHOW ERRORS;
