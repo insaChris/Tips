@@ -1,3 +1,7 @@
+------------------------
+--Ejecutar como System--
+------------------------
+
 -- Todos los datatables
 select * from dba_data_files;
 select file_name, file_id, relative_fno from dba_data_files;
