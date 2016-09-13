@@ -1,0 +1,15 @@
+function getUrlVars() {
+    var vars = []; 
+    var parametro;
+    var parametros = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < parametros.length; i++) {
+        parametro = parametros[i].split('=');
+        vars.push(parametro[0]);
+        vars[parametro[0]] = parametro[1];
+    }
+    return vars;
+}
+
+USO:
+var miVariable = getUrlVars()["parametroURL"]);
+Donde parametroURL es el nombre del parámetro que queremos obtener
