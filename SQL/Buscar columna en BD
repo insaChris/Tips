@@ -1,0 +1,9 @@
+To find all tables with a particular column:
+
+select owner, table_name from all_tab_columns where column_name = 'ID';
+To find tables that have any or all of the 4 columns:
+
+select owner, table_name, column_name
+from all_tab_columns
+where column_name in ('ID', 'FNAME', 'LNAME', 'ADDRESS');
+To find tables that have all 4 columns (with none missing):
