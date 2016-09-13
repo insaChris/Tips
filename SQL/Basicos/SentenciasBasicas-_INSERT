@@ -1,0 +1,22 @@
+INSERT
+
+Tiene dos posibles variantes
+
+En la primera no se indican los nombres de las columnas pero es necesario incluir el valor de todas ellas
+INSERT INTO table_name
+VALUES (value1,value2,value3,...);
+
+En la segunda se indican de manera posicional el nombre de la columna y el valor asignado
+INSERT INTO table_name (column1,column2,column3,...)
+VALUES (value1,value2,value3,...);
+Se usa mucho, por ejemplo en las tablas en las que el ID es autoincremental, y no es necesario indicar su valor.
+
+
+Inserción de una fila:
+INSERT INTO NombreTabla [(columna [, columna] ...)]
+VALUES (valor [, valor] ...);
+
+Inserción multifila:
+INSERT INTO NombreTabla1 [(columna [, columna] ...)]
+SELECT {columna [, columna] ... | *}
+FROM NombreTabla2 [CLÁUSULAS DE SELECT];

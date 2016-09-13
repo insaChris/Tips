@@ -1,0 +1,8 @@
+Elimina filas de una tabla
+
+DELETE FROM table_name
+WHERE some_column=some_value; 
+
+Como dice la canción:
+No te olvides de poner el where en el delete from...
+Sin where se borran TODAS las filas de la tabla (como si hicieras TRUNK)

@@ -1,0 +1,48 @@
+Los JOINS se usan para combinar filas de dos o más tablas. A los joins se les indica una condición para hacer la unión, en caso contrario une la primera fila de una tabla con todas las de la segunda, la segunda fila de la tabla con todas las de la segunda...
+
+Posibilidades para indicar la condición de unión:
+  1. Usando WHERE
+  SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+  FROM Orders, Customers
+  WHERE Orders.CustomerID=Customers.CustomerID; 
+
+  2. Usando JOINS + ON
+  SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+  FROM Orders INNER JOIN Customers
+  ON Orders.CustomerID=Customers.CustomerID; 
+
+TIPOS DE JOINS:
+
+  INNER JOIN: Devuelve todas las filas en las que hay al menos una coincidencia entre las DOS tablas (INTERSECCION)
+  LEFT JOIN: Devuelve todas las filas de la tabla izquierda y las columnas de la tabla derecha que cumplen la condición      del join.
+  RIGHT JOIN: Devuelve todas las filas de la tabla derecha y las columnas de la tabla izquierda que cumplen la condición     del join.
+  FULL JOIN: Devuelve todas las filas en las que hay coincidencia en UNA de las tablas.
+
+
+INNER JOIN:
+Devuelve la intersección entre ambas tablas, por lo que si tenemos dos tablas una de departamentos y otra de empleados y hay un departamento sin empleados este departamento no sale listado en el join
+  SELECT column_name(s)
+  FROM table1
+  INNER JOIN table2
+  ON table1.column_name=table2.column_name;
+
+LEFT JOIN:
+Devuelve todos los registros de la tabla de la izquierda y todos aquellos de la derecha que cumplen la condición. En este caso si que se listarían los departamentos que no se listaban en el INNER JOIN
+  SELECT column_name(s)
+  FROM table1
+  LEFT JOIN table2
+  ON table1.column_name=table2.column_name;
+  
+RIGHT JOIN:
+Devuelve todos los registros de la tabla de la derecha y todos aquellos de la izquierda que cumplen la condición. En este caso si que se listarían trabajadores que no estuvieran asignados a ningún departamento.
+  SELECT column_name(s)
+  FROM table1
+  RIGHT JOIN table2
+  ON table1.column_name=table2.column_name;
+  
+FULL OUTER JOIN
+Puede verse como la unión de las dos anteriores, devuelve todas las líneas de la tabla de la izquierda y todas las filas de la tabla de la derecha. Si hay filas en la tabla de la izquierda que no tienen "match" (no hay valores comunes en la columna que hace de condición) en la tabla de la derecha, o viceversa estas filas también son listadas.
+SELECT column_name(s)
+FROM table1
+FULL OUTER JOIN table2
+ON table1.column_name=table2.column_name;

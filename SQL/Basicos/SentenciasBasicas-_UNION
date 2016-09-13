@@ -1,0 +1,31 @@
+El operador UNION combina los resultados de dos consultas. Las filas duplicadas que
+aparecen se reducen a una fila única. 
+Hay que notar que ambas consultas deben tener las mismas columnas.
+
+SELECT COL1, COL2, ... FROM TABLA1 WHERE CONDICION
+UNION
+SELECT COL1, COL2, ... FROM TABLA2 WHERE CONDICION;
+
+UNION por defecto no permite duplicados, si los queremos incluir hay que usar la sentencias UNION ALL
+
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+
+
+
+El operador INTERSECT devuelve las filas que son iguales en ambas consultas. Todas
+las filas duplicadas serán eliminadas antes de la generación del resultado final.
+
+SELECT COL1, COL2, ... FROM TABLA1 WHERE CONDICION
+INTERSECT
+SELECT COL1, COL2, ... FROM TABLA2 WHERE CONDICION;
+
+
+El operador MINUS devuelve aquellas filas que están en la primera SELECT y no en la
+segunda. Las filas duplicadas del primer conjunto se reducirán a una fila única antes de
+que empiece la comparación con el otro conjunto.
+
+SELECT COL1, COL2, ... FROM TABLA1 WHERE CONDICION
+MINUS
+SELECT COL1, COL2, ... FROM TABLA2 WHERE CONDICION;
