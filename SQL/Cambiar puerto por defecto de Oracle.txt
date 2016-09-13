@@ -1,0 +1,8 @@
+Cambio el puerto poe defecto de oracle del 8080 al 9090
+
+ejecutar una consola de windows (cmd)
+Arrancar la consola de Oracle (sqlplus)
+Introducir usuario system
+Introducir contraseña Oracle
+ejecutar el comando exec dbms_xdb.sethttpport(9090);
+comando de comprobación select dbms_xdb.gethttpport() from dual;
