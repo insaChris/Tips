@@ -1,0 +1,53 @@
+JSP
+---------------------------------------------
+
+Los ficheros jsp se compilan y ocnvierten en servlets la primera vez que son invocados. Se ejecutaré el servlet generado.
+
+El servlet generado se puede encontrar en el directorio worl de tomcat.
+En el caso de estar usando eclipse es directorio está en : C:\Java-JEE\eclipse\mars\work_NOTIS_EVO\.metadata\.plugins\org.eclipse.wst.server.core\tmp1\work
+
+En eclipse se crean dentro de WebContent, en caso de maven en webapp.
+
+El código Java dentro de una jsp se enmarca de varias maneras (aunque se considera una mala práctica):
+<%= expresión %> El resultado de evaluar la expresión se inserta en la página HTML
+<% código %> Un scriptlet -> El código se insertará en el método de servicio del servlet
+<%! declaraciones %> Las declaraciones se insertan en la clase, no en un método (para declarar variables de clase). Si se edclaran dentro de <% %> serán variables locales
+<%-- Comentario --%> Comentario JSP
+
+---------------------------------------------
+Objetos predefinidos en una JSP
+---------------------------------------------
+request -> Objeto HttpServletRequest que permite acceder a la información de la solicitud
+response -> Objeto HttpServletResponse para generar la respuesta
+session -> Objeto HttpSession asociado a la petición (Si no hubiera sesión será null)
+out -> Objeto JspWriter (similar a un PrintWriter) para generar la salida para el cliente
+application -> El objeto ServletContext del contenedor web
+
+---------------------------------------------
+DIRECTIVAS
+---------------------------------------------
+<%@ directiva atributo="valor" %>
+<%@ directiva atributo1="valor1" atributo2="valor2" atributoN="valorN" %>
+
+    - include -> permite incluir otro fichero que se tratará como JSP.El fichero se referencia con una URL relativa a la página JSP o al servidor si va precedido de /
+    - page -> permite importar un paquete (<%@ page import="java.util.*" %>) 
+
+---------------------------------------------
+Uso de Java Beans con JSP (POJO's)
+---------------------------------------------
+Los Java Beans son componentes Java que se usan habitualmente en aplicaciones Web para gestionar la lógica de negocio.
+Clases Java que cumplen varias convenciones
+Declarados dentro de un paquete
+Constructor sin argumentos, o que no se defina ningún constructor
+Todos los atributos son private (stos atributos se denominan propiedades)
+Métodos de acceso a las propiedades
+    getPropiedad() para lectura isPropiedad para los booleanos (opcional)  
+    setPropiedad(valor) para escritura
+Métodos para realizar funciones más complejas
+
+    jsp:useBean.        Crea un Java Bean <jsp:useBean id="nombreBean" class="paquete.Clase"/> equivale a <%paquete.Clase nombreBean =new paquete.Clase(); %>
+    jsp:setProperty     Modifica una propiedad llamando al método setPropiedad()
+    jsp:getProperty     Obtiene el valor de una propiedad llamando a getPropiedad()
+
+    <jsp:forward page="URL"/>                   Salta al URL (estático)
+    <jsp:forward page="<%=expresiónJava %>"/>   Salta al URL resultante de la expresión Java (calculado dinámicamente)
