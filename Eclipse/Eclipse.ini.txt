@@ -1,0 +1,22 @@
+Cuando arrancamos el Eclipse se usa la jvm que se encuentra en la variable PATH del sistema, 
+aunque luego tengamos configurado que para los proyectos use  otra jvm. 
+La versión de java con la que arranca eclipse se puede configurar editaando el archivo eclipse.ini, 
+y añadir la siguiente línea con la ruta al javaw que quieras usar:
+
+-vm
+c:/java/jre6/bin/javaw.exe
+
+(-vm. Debe estar ubicado antes del parámetro -vmargs)
+
+--------------------------------------------------------------------------------------------------------
+
+también podemos tunear el tamaño inicial y máximo de las memorias heap y permgen.
+Para configurar los valores inicial y máximo se usan los parametros de la jvm -Xms y -Xmx respectivamente
+
+-vmargs
+-Xms128m
+-Xmx512m
+
+--------------------------------------------------------------------------------------------------------
+
+
