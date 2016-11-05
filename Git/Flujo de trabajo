@@ -1,0 +1,29 @@
+El primer paso es posicionarse en la rama de trabajo
+	git checkout develop/2.0  	--Partimos de develop/2.0
+	
+Una vez posicionados actualizamos la rama por si acaso hubieran cambios	
+	git pull
+	
+Creamos una rama para iniciar las modificaciones
+	git branch feature/NDC2-1234 	--Crear rama desde develop/2.0
+
+Posicionarse en la bueva rama de trabajo
+	git checkout feature/NDC2-1234
+
+--Modificamos cosicas (Se hace el desarrollo) y se añaden los archivos modificados al stegin area y se hace commit
+	git add .
+	git commit -m "NDC2-1234 cosicas modificadas"
+
+--Si tardamos mucho, mergeamos desde develop/2.0 para estar sincronizados:
+	git fetch
+	git merge origin/develop/2.0
+
+--Al finalizar, mergeamos desde develop/2.0 y solucionamos los conflictos en nuestra rama
+	git fetch
+	git merge origin/develop/2.0
+
+--Despues mergeamos a develop/2.0
+	git checkout develop/2.0
+	git pull
+	git merge feature/NDC2-1234
+	git push
